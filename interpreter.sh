@@ -1,16 +1,29 @@
 #!/bin/sh
-if [ "$1" = "*.5lang" ]; then
-    echo "1"
-    exit 1
+
+interpret() {
+    while read line
+    do
+        for word in $line
+        do
+            if [ "$word" = 5 ]
+            then
+                echo "Five"
+            else
+                printf "syntax error: expecting '5', got '%s'\n" "$word"
+                exit 1
+            fi
+        done
+    done
+}
+
+if [ $# -le 1 ]
+then
+    # read from stdin
+    interpret
+    exit
 fi
-LINES=$(cat $1)
-for LINE in $LINES
+
+for f in $@
 do
-    if [ "$LINE" = "5" ]
-    then
-        echo "Five"
-    else
-        echo "2"
-        exit 2
-    fi
+    interpret < "$f"
 done
