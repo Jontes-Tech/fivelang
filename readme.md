@@ -1,10 +1,20 @@
 # 5Lang
 The language of the number five.
-# How to get started
-Create a file called `whatever.5lang`.  
-Run the interpreter.sh with the path of the 5lang file.
-Done.
 
-## Error codes:
-1 - Not a 5lang file
-2 - No fives in file. Please add "5" on a newline in your file.
+## How to get started
+
+1. create a file (preferred extension is .5lang)
+2. write some 5lang code (see the [grammar](#grammar) section)
+3. run like this: `./interpreter.sh yourfile.5lang`
+
+## Grammar
+
+5lang's grammar in an EBNF-like style:
+
+```
+program
+    ; five*
+
+five
+    ; "5" [ \t\n]+
+```

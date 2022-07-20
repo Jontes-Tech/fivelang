@@ -16,7 +16,7 @@ interpret() {
     done
 }
 
-if [ $# -le 1 ]
+if [ $# -lt 1 ]
 then
     # read from stdin
     interpret
